@@ -11,7 +11,6 @@ import {
 export const decodeBecoXWater = (data: string, devie: string): void => {
 
     // is string length OK
-
     if (data.length !== BOVE_LENGTH) return;
 
 
