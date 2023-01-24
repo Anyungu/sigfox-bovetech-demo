@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "compile": "tsc",
-    "buld": "npm run compile && npm run addjs",
+    "build": "npm run compile && npm run addjs",
     "addjs": "ts-add-js-extension add --dir=dist",
     "addjs:dev": "ts-add-js-extension add --dir=src",
     "start:dev": "nodemon ./src/index.ts",
