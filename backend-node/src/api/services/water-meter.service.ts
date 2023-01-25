@@ -13,9 +13,9 @@ const saveInfluxWaterData = (data: WaterMeterDecoded) => {
     .stringField("payload", data.payload)
     .tag("device", data.device)
 
-    console.log(newDataPoint)
+  console.log(newDataPoint)
 
-  Object.entries(data.alarms).forEach(([key, value], idx) => {
+  Object.entries(data.alarms).forEach(([key, value]) => {
     newDataPoint.booleanField(key, value)
   })
 
