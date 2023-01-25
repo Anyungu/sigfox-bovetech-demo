@@ -12,20 +12,20 @@ export const BOVE_BECO_X_WATER_BYTES_AND_POSITIONS = {
 }
 
 export const BOVE_BECO_X_WATER_ST1_DEFINITIONS_BY_INDEX = {
-    2: 'Leakage Alarm',
-    3: 'Burst Alarm',
-    4: 'Tamper Alarm',
-    5: 'Freezing Alarm',
+    2: 'leakageAlarm',
+    3: 'burstAlarm',
+    4: 'tamperAlarm',
+    5: 'freezingAlarm',
 }
 
 export const BOVE_BECO_X_WATER_ST2_DEFINITIONS_BY_INDEX = {
-    0: 'Meter Battery Alarm',
-    1: 'Empty Pipe Alarm',
-    2: 'Reverse Flow Alarm',
-    3: 'Over Range Alarm',
-    4: 'Temperature Alarm',
-    5: 'EE Error',
-    6: 'Transduce IN Error',
-    7: 'Transduce OUT Error',
+    0: 'meterBatteryAlarm',
+    1: 'emptyPipeAlarm',
+    2: 'reverseFlowAlarm',
+    3: 'overRangeAlarm',
+    4: 'temperatureAlarm',
+    5: 'eEError',
+    6: 'transduceINError',
+    7: 'transduceOUTError',
 }
 

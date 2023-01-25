@@ -65,13 +65,6 @@ app.use('/graphql', cors<cors.CorsRequest>(), express.json(), expressMiddleware(
 
 app.use('/api', cors<cors.CorsRequest>(), express.json(), summaryRestRouter)
 
-app.use((req, res, next) => {
-  const error = new Error('Not Found');
-  error.message = 'Invalid Route';
-  next(error);
-});
-
-
 app.use((error: any, req: any, res: any) => {
   res.status(error.status || 500);
 
@@ -81,6 +74,14 @@ app.use((error: any, req: any, res: any) => {
     },
   });
 });
+
+
+app.use('*', (req, res, next) => {
+  const error = new Error('Not Found');
+  error.message = 'Invalid Route';
+  next(error);
+});
+
 
 
 // Modified server startup

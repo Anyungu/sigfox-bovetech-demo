@@ -5,10 +5,11 @@ import {
     BOVE_LENGTH,
     BOVE_START_CONSTANT
 } from "../configs/bove"
+import { WaterMeterDecoded } from "../moidels/water-meter";
 
 
 
-export const decodeBecoXWater = (data: string, devie: string): void => {
+export const decodeBecoXWater = (data: string, device: string): WaterMeterDecoded => {
 
     // is string length OK
     if (data.length !== BOVE_LENGTH) return;
@@ -38,7 +39,7 @@ export const decodeBecoXWater = (data: string, devie: string): void => {
     const st1Alarms = getSt1AndSt2Alarms(st1Value, 'st1');
     const st2Alarms = getSt1AndSt2Alarms(st2Value, 'st2');
 
-    console.log(total, st1Alarms, st2Alarms);
+    return { total, device, payload: data, alarms: { ...st1Alarms, ...st2Alarms } }
 
 
 }
@@ -57,19 +58,19 @@ const convertToBinary = (data: string): string => {
 }
 
 const getSt1AndSt2Alarms = (data: string, val: string): {} => {
-    let alarms = {}
+    let alarms: { [key: string]: boolean } = {};
 
     for (let i = 0; i < data.length; i++) {
         const char = data.charAt(i);
 
         if (val === 'st2' && (BOVE_BECO_X_WATER_ST2_DEFINITIONS_BY_INDEX?.[i] ?? 'ignore') !== 'ignore') {
             const currentName = BOVE_BECO_X_WATER_ST2_DEFINITIONS_BY_INDEX?.[i]
-            alarms[currentName] = char
+            alarms[currentName] = char === '1' ? true : false
         }
 
         if (val === 'st1' && (BOVE_BECO_X_WATER_ST1_DEFINITIONS_BY_INDEX?.[i] ?? 'ignore') !== 'ignore') {
             const currentName = BOVE_BECO_X_WATER_ST1_DEFINITIONS_BY_INDEX?.[i]
-            alarms[currentName] = char
+            alarms[currentName] = char === '1' ? true : false
         }
 
     }
