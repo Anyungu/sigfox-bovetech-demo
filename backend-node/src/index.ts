@@ -66,9 +66,7 @@ app.use('/graphql', cors<cors.CorsRequest>(), express.json(), expressMiddleware(
 app.use('/api', cors<cors.CorsRequest>(), express.json(), summaryRestRouter)
 
 app.use((error: any, req: any, res: any) => {
-  res.status(error.status || 500);
-
-  return res.json({
+  res.status(error.status || 500).json({
     error: {
       message: error.message,
     },
