@@ -27,6 +27,7 @@ const saveInfluxWaterData = (data: WaterMeterDecoded) => {
 export const handleWaterMeterdata = (data: string, device: string) => {
 
   const decoded: WaterMeterDecoded = decodeBecoXWater(data, device)
+  console.log(decoded)
   saveInfluxWaterData(decoded)
 
 }
