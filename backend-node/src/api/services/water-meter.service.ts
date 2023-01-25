@@ -8,7 +8,7 @@ import { decodeBecoXWater } from "../../utils/bove";
 
 const saveInfluxWaterData = (data: WaterMeterDecoded) => {
 
-  const newDataPoint = new Point(data.device)
+  let newDataPoint = new Point(data.device)
     .floatField("totalAmount", data.total)
     .stringField("payload", data.payload)
     .tag("device", data.device)
@@ -17,6 +17,8 @@ const saveInfluxWaterData = (data: WaterMeterDecoded) => {
   Object.entries(data.alarms).forEach(([key, value], idx) => {
     newDataPoint.booleanField(key, value)
   })
+
+  console.log(newDataPoint)
 
   influxContext().writeApi.writePoint(newDataPoint)
 };
